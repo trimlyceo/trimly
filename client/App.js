@@ -17,7 +17,7 @@ export default function App() {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ name, service, barber, date: '2025-06-21', time: '14:30' })
+      body: JSON.stringify({ name, service, barber, date, time })
     });
 
     const data = await response.json();
