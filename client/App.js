@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 
@@ -5,6 +6,8 @@ export default function App() {
   const [name, setName] = useState('');
   const [service, setService] = useState('');
   const [barber, setBarber] = useState('');
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
   const handleBooking = async () => {
