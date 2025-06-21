@@ -7,10 +7,29 @@ export default function App() {
   const [barber, setBarber] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleBooking = () => {
-    // For now we’ll just simulate a booking
-    setSubmitted(true);
-  };
+  const handleBooking = async () => {
+  try {
+    const response = await fetch('http://localhost:5000/api/bookings', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name, service, barber, date: '2025-06-21', time: '14:30' })
+    });
+
+    const data = await response.json();
+    console.log('Booking response:', data);
+
+    if (response.ok) {
+      setSubmitted(true);
+    } else {
+      alert('Something went wrong!');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Could not connect to the server.');
+  }
+};
 
   return (
     <View style={styles.container}>
